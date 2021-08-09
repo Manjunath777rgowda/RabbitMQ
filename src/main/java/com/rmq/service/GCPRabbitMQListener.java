@@ -1,4 +1,4 @@
-package com.middleware.nuvelink.rmq.service;
+package com.rmq.service;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;

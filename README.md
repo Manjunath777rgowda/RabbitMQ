@@ -42,10 +42,10 @@ This is the spring boot application which can be used as the interface for the r
     3. eg:-
         1. To create AWS subscriber
            1. **aws.rabbitmq.subscriber.queue**=`<value>`
-           2. **aws.rabbitmq.subscriber.class.name**=`<com.rmq.service.AWSRabbitMQListener>`
+           2. **aws.rabbitmq.subscriber.class.name**=`<AWSRabbitMQListener>`
        2. To create GCP subscriber
            1. **gcp.rabbitmq.subscriber.queue**=`<value>`
-           2. **gcp.rabbitmq.subscriber.class.name**=`<com.rmq.service.GCPRabbitMQListener>`
+           2. **gcp.rabbitmq.subscriber.class.name**=`<GCPRabbitMQListener>`
 
 # How to implement the Message Listener
 1. Create the service class, Annotate with `@Service` and implement **MessageListener**

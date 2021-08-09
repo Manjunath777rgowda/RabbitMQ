@@ -1,9 +1,6 @@
-package com.middleware.nuvelink.rmq.config;
+package com.rmq.config;
 
-import static com.middleware.nuvelink.rmq.constant.RabbitMQConstant.*;
-
-import java.util.List;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -18,9 +15,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 
-import com.middleware.nuvelink.rmq.service.AWSRabbitMQListener;
+import java.util.List;
+import java.util.Objects;
 
-import lombok.extern.slf4j.Slf4j;
+import static com.rmq.constant.RabbitMQConstant.*;
 
 @Slf4j
 @Configuration
@@ -107,7 +105,7 @@ public class RabbitMQConfiguration {
                 SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
                 simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
                 simpleMessageListenerContainer.setQueues(queueBean);
-                simpleMessageListenerContainer.setMessageListener(new AWSRabbitMQListener());
+                simpleMessageListenerContainer.setMessageListener((MessageListener) context.getBean(Objects.requireNonNull(environment.getProperty(prefix + SUBSCRIBER_MESSAGE_LISTENER_CLASS_NAME))));
                 return simpleMessageListenerContainer;
             });
         }

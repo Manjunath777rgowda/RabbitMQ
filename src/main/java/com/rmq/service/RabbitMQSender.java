@@ -1,11 +1,11 @@
-package com.middleware.nuvelink.rmq.service;
+package com.rmq.service;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import static com.middleware.nuvelink.rmq.constant.RabbitMQConstant.*;
+import static com.rmq.constant.RabbitMQConstant.*;
 
 @Service
 public class RabbitMQSender {

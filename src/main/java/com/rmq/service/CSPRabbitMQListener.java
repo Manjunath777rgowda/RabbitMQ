@@ -1,4 +1,4 @@
-package com.middleware.nuvelink.rmq.service;
+package com.rmq.service;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
@@ -8,11 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class AWSRabbitMQListener implements MessageListener {
+public class CSPRabbitMQListener implements MessageListener {
 
     public void onMessage( Message message )
     {
-        log.info("Consuming Message in AWS- " + new String(message.getBody()));
+        log.info("Consuming Message in CSP- " + new String(message.getBody()));
         //todo Do something on message
     }
 

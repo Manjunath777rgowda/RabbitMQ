@@ -1,4 +1,4 @@
-package com.middleware.nuvelink.rmq.constant;
+package com.rmq.constant;
 
 public class RabbitMQConstant {
 
@@ -7,6 +7,7 @@ public class RabbitMQConstant {
     public static final String PUBLISHER_ROUTING_PROPERTY_NAME = ".rabbitmq.publisher.routingKey";
 
     public static final String SUBSCRIBER_QUEUE_PROPERTY_NAME = ".rabbitmq.subscriber.queue";
+    public static final String SUBSCRIBER_MESSAGE_LISTENER_CLASS_NAME = ".rabbitmq.subscriber.class.name";
 
     public static final String EXCHANGE = "Exchange";
     public static final String QUEUE = "Queue";

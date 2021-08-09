@@ -1,11 +1,11 @@
-package com.middleware.nuvelink.rmq;
+package com.rmq;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.middleware.nuvelink.rmq.service.RabbitMQSender;
+import com.rmq.service.RabbitMQSender;
 
 @SpringBootApplication
 public class RMQApplication implements CommandLineRunner {
@@ -21,7 +21,6 @@ public class RMQApplication implements CommandLineRunner {
     @Override
     public void run( String... args ) throws Exception
     {
-        System.out.println("main");
         rabbitMQSender.send("Hi. I'm AWS", "aws");
         System.out.println("AWS published");
         rabbitMQSender.send("Hi. I'm GCP", "gcp");
