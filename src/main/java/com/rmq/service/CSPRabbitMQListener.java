@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
+@Service( "CSPRabbitMQListener" )
 public class CSPRabbitMQListener implements MessageListener {
 
     public void onMessage( Message message )

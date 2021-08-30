@@ -18,20 +18,20 @@ This is the spring boot application which can be used as the interface for the r
     3. RoutingKey : `<prefix>`._rabbitmq.publisher.routingKey_
     4. eg:-
         1. To create AWS publisher
-           1. **aws.rabbitmq.publisher.exchange**=`<value>`
-           2. **aws.rabbitmq.publisher.queue**=`<value>`
-           3. **aws.rabbitmq.publisher.routingKey**=`<value>`
+            1. **aws.rabbitmq.publisher.exchange**=`<value>`
+            2. **aws.rabbitmq.publisher.queue**=`<value>`
+            3. **aws.rabbitmq.publisher.routingKey**=`<value>`
         2. To create GCP publisher
-           1. **gcp.rabbitmq.publisher.exchange**=`<value>`
-           2. **gcp.rabbitmq.publisher.queue**=`<value>`
-           3. **gcp.rabbitmq.publisher.routingKey**=`<value>`
+            1. **gcp.rabbitmq.publisher.exchange**=`<value>`
+            2. **gcp.rabbitmq.publisher.queue**=`<value>`
+            3. **gcp.rabbitmq.publisher.routingKey**=`<value>`
 
 # How to publish the message to RabbitMQ
 1. Autowired the `RabbitMQSender` in your service
-   1. `@Autowired private RabbitMQSender rabbitMQSender;`
+    1. `@Autowired private RabbitMQSender rabbitMQSender;`
 2. Send the Message to desired queue using Configuration prefix as follows
-   1. `rabbitMQSender.send(<Object>, <ConfigurationPrefix>);`
-   
+    1. `rabbitMQSender.send(<Object>, <ConfigurationPrefix>);`
+
 # How to configure multiple subscriber dynamically
 1. add comma separated value to the property 'rabbitmq.subscriber.configuration.prefix' which will be treated as the prefix for the different configuration.
     1. eg: **rabbitmq.subscriber.configuration.prefix=aws,gcp**
@@ -41,25 +41,25 @@ This is the spring boot application which can be used as the interface for the r
     2. ClassName : `<prefix>`._rabbitmq.subscriber.class.name_ (Class name is the message listener class where you will receive the message from the RabbitMq)
     3. eg:-
         1. To create AWS subscriber
-           1. **aws.rabbitmq.subscriber.queue**=`<value>`
-           2. **aws.rabbitmq.subscriber.class.name**=`<AWSRabbitMQListener>`
-       2. To create GCP subscriber
-           1. **gcp.rabbitmq.subscriber.queue**=`<value>`
-           2. **gcp.rabbitmq.subscriber.class.name**=`<GCPRabbitMQListener>`
+            1. **aws.rabbitmq.subscriber.queue**=`<value>`
+            2. **aws.rabbitmq.subscriber.class.name**=`<AWSRabbitMQListener>`
+        2. To create GCP subscriber
+            1. **gcp.rabbitmq.subscriber.queue**=`<value>`
+            2. **gcp.rabbitmq.subscriber.class.name**=`<GCPRabbitMQListener>`
 
 # How to implement the Message Listener
-1. Create the service class, Annotate with `@Service` and implement **MessageListener**
+1. Create the service class, Annotate with `@Service(<ListnerName>)` and implement **MessageListener**
 2. Implement the method `public void onMessage( Message message )`
-    e.g.,
+   e.g.,
  ````  
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.stereotype.Service; 
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+@Service("<ListnerName>")
 @Slf4j
-public class <ClassName_Property> implements MessageListener {
+public class <ListnerName> implements MessageListener {
 
     public void onMessage( Message message )
     {
